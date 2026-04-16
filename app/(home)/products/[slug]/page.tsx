@@ -1,10 +1,10 @@
 import CTASection from "@/components/CTASection";
 import ProductCard from "@/components/ProductCard";
+import { ProductImage } from "@/components/ProductImage";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { listProducts, getProductBySlug } from "@/lib/products-data";
-import { ProductImage } from "@/components/ProductImage";
 import { productDisplayImage } from "@/lib/products";
+import { getProductBySlug, listProducts } from "@/lib/products-data";
 import { ArrowLeft, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -34,9 +34,7 @@ export async function generateMetadata({
   }
 
   const desc =
-    product.shortDescription.trim() ||
-    product.description.trim() ||
-    undefined;
+    product.shortDescription.trim() || product.description.trim() || undefined;
 
   return {
     title: product.name,
@@ -111,7 +109,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   Request Quote
                 </Button>
               </Link>
-              <a href="tel:+1234567890">
+              <a href="tel:+2348068755208">
                 <Button
                   size="lg"
                   variant="outline"

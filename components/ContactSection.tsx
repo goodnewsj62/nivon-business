@@ -34,7 +34,7 @@ export default function ContactSection() {
               <div>
                 <h2 className="text-sm font-semibold text-foreground">Phone</h2>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+2348068755208"
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
                   +234 8068755208

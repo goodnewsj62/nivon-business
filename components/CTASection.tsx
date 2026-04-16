@@ -22,7 +22,7 @@ const CTASection = () => (
             Request a Quote
           </Button>
         </Link>
-        <a href="tel:+1234567890">
+        <a href="tel:+2348068755208">
           <Button
             size="lg"
             variant="outline"
