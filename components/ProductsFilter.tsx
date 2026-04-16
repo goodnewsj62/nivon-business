@@ -2,16 +2,20 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import { categories, products } from "@/lib/products";
+import { categories, type Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
-export default function ProductsFilter() {
+type ProductsFilterProps = {
+  products: Product[];
+};
+
+export default function ProductsFilter({ products }: ProductsFilterProps) {
   const [active, setActive] = useState<(typeof categories)[number]>("All");
 
   const filteredProducts = useMemo(() => {
     if (active === "All") return products;
     return products.filter((product) => product.category === active);
-  }, [active]);
+  }, [active, products]);
 
   return (
     <>

@@ -1,7 +1,14 @@
+import { AdminChrome } from "@/components/admin/AdminChrome";
+
+export const metadata = {
+  title: "Admin",
+  robots: { index: false, follow: false },
+};
+
 export default function AdminLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  return <section className="container py-10">{children}</section>;
+}) {
+  return <AdminChrome>{children}</AdminChrome>;
 }

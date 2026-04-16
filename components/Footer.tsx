@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => (
@@ -8,18 +9,21 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-              <span className="text-lg font-bold text-primary-foreground">
-                M
-              </span>
-            </div>
-            <span className="font-heading text-lg font-bold text-foreground">
-              MedEquip
+            <Image
+              src="/nivon.png"
+              alt="Nivon logo"
+              width={100}
+              height={100}
+              className="object-contain"
+              priority
+            />
+            <span className="text-center font-heading text-xl font-bold text-foreground relative -left-10">
+              Nivon
             </span>
           </Link>
           <p className="mt-3 text-sm text-muted-foreground">
             Your trusted partner for high-quality medical equipment. Serving
-            healthcare professionals since 2005.
+            healthcare professionals since 2021.
           </p>
         </div>
 
@@ -80,30 +84,28 @@ const Footer = () => (
             <li className="flex items-start gap-2 text-sm text-muted-foreground">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <a href="tel:+1234567890" className="hover:text-foreground">
-                +1 (234) 567-890
+                +234 8068755208
               </a>
             </li>
             <li className="flex items-start gap-2 text-sm text-muted-foreground">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <a
-                href="mailto:info@medequip.com"
+                href="mailto:samuelstephen812@gmail.com "
                 className="hover:text-foreground"
               >
-                info@medequip.com
+                samuelstephen812@gmail.com
               </a>
             </li>
             <li className="flex items-start gap-2 text-sm text-muted-foreground">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span>
-                123 Medical Drive, Suite 100, Healthcare City, HC 12345
-              </span>
+              <span>19 okiti lane idumota lagos island</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} MedEquip. All rights reserved.
+        © {new Date().getFullYear()} Nivon. All rights reserved.
       </div>
     </div>
   </footer>

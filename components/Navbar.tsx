@@ -53,7 +53,7 @@ const Navbar = () => {
           <Link href="/contact">
             <Button size="sm" className="ml-3 gap-2">
               <Phone className="h-3.5 w-3.5" />
-              Request Quote
+              Get in touch
             </Button>
           </Link>
         </nav>
@@ -93,7 +93,7 @@ const Navbar = () => {
             <Link href="/contact" onClick={() => setMobileOpen(false)}>
               <Button className="mt-2 w-full gap-2">
                 <Phone className="h-4 w-4" />
-                Request a Quote
+                Get in touch
               </Button>
             </Link>
           </nav>

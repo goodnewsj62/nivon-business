@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Award, Shield, Target, Users } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import { Award, Shield, Target, Users } from "lucide-react";
+import type { Metadata } from "next";
 
 const values = [
   {
@@ -28,7 +28,7 @@ const values = [
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn how MedEquip helps healthcare providers with dependable medical equipment and long-term support.",
+    "Learn how Nivon helps healthcare providers with dependable medical equipment and long-term support.",
 };
 
 export default function AboutPage() {
@@ -37,12 +37,17 @@ export default function AboutPage() {
       <section className="bg-card">
         <div className="container py-12 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">About Us</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+              About Us
+            </p>
             <h1 className="mt-1 font-heading text-2xl font-bold text-foreground md:text-3xl">
               Empowering Healthcare Through Quality Equipment
             </h1>
             <p className="mt-4 text-sm text-muted-foreground md:text-base">
-              Since 2005, MedEquip has been a trusted supplier of medical devices and equipment to hospitals, clinics, and laboratories across the globe. Our mission is to make high-quality healthcare technology accessible and affordable.
+              Since 2021, Nivon has been a trusted supplier of medical devices
+              and equipment to hospitals, clinics, and laboratories across the
+              globe. Our mission is to make high-quality healthcare technology
+              accessible and affordable.
             </p>
           </div>
         </div>
@@ -50,15 +55,24 @@ export default function AboutPage() {
 
       <section className="bg-background">
         <div className="container py-14 md:py-20">
-          <h2 className="text-center font-heading text-xl font-bold text-foreground md:text-2xl">Our Core Values</h2>
+          <h2 className="text-center font-heading text-xl font-bold text-foreground md:text-2xl">
+            Our Core Values
+          </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => (
-              <article key={value.title} className="rounded-lg border border-border bg-card p-6 text-center shadow-card">
+              <article
+                key={value.title}
+                className="rounded-lg border border-border bg-card p-6 text-center shadow-card"
+              >
                 <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
                   <value.icon className="text-primary" />
                 </div>
-                <h3 className="mt-4 font-heading text-base font-semibold text-foreground">{value.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{value.desc}</p>
+                <h3 className="mt-4 font-heading text-base font-semibold text-foreground">
+                  {value.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {value.desc}
+                </p>
               </article>
             ))}
           </div>

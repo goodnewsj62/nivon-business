@@ -1,12 +1,25 @@
 export type Product = {
+  /** Database primary key (e.g. UUID when using a default on insert). */
   id: string;
+  /** URL segment: `/products/[slug]` — unique, slugified from name on create. */
+  slug: string;
   name: string;
   shortDescription: string;
   description: string;
   category: string;
   image: string;
   inStock: boolean;
+  /** Shown in homepage featured grid (max 3 site-wide; extras remain in catalog). */
+  featured: boolean;
 };
+
+/** Used when `image` is empty (matches nullable `product.image` in Supabase). */
+export const productImagePlaceholder = "/nivon.png";
+
+export function productDisplayImage(product: Pick<Product, "image">): string {
+  const src = product.image?.trim();
+  return src ? src : productImagePlaceholder;
+}
 
 export const categories = [
   "All",
@@ -18,9 +31,15 @@ export const categories = [
   "Respiratory Equipment",
 ] as const;
 
+/** Category values for forms (excludes the "All" filter sentinel). */
+export const productCategoryOptions = categories.filter(
+  (c): c is Exclude<(typeof categories)[number], "All"> => c !== "All",
+);
+
 export const products: Product[] = [
   {
     id: "patient-monitor-pro",
+    slug: "patient-monitor-pro",
     name: "Patient Monitor Pro X200",
     shortDescription:
       "Advanced multi-parameter patient monitoring system with 12-inch touchscreen display.",
@@ -29,9 +48,11 @@ export const products: Product[] = [
     category: "Patient Monitoring",
     image: "/product-monitor.jpg",
     inStock: true,
+    featured: true,
   },
   {
     id: "surgical-instrument-set",
+    slug: "surgical-instrument-set",
     name: "Premium Surgical Instrument Set",
     shortDescription:
       "Complete stainless steel surgical instrument kit for general surgery procedures.",
@@ -40,9 +61,11 @@ export const products: Product[] = [
     category: "Surgical Equipment",
     image: "/product-surgical.jpg",
     inStock: true,
+    featured: true,
   },
   {
     id: "laboratory-microscope",
+    slug: "laboratory-microscope",
     name: "Clinical Laboratory Microscope",
     shortDescription:
       "Professional-grade binocular microscope with LED illumination for clinical diagnostics.",
@@ -51,9 +74,11 @@ export const products: Product[] = [
     category: "Lab Equipment",
     image: "/product-lab.jpg",
     inStock: true,
+    featured: true,
   },
   {
     id: "digital-bp-monitor",
+    slug: "digital-bp-monitor",
     name: "Digital Blood Pressure Monitor",
     shortDescription:
       "Clinically validated automatic blood pressure monitor for accurate readings.",
@@ -62,9 +87,11 @@ export const products: Product[] = [
     category: "Diagnostic Equipment",
     image: "/product-bp.jpg",
     inStock: true,
+    featured: false,
   },
   {
     id: "portable-ultrasound",
+    slug: "portable-ultrasound",
     name: "Portable Ultrasound System",
     shortDescription:
       "Compact, lightweight ultrasound system for point-of-care diagnostics.",
@@ -73,9 +100,11 @@ export const products: Product[] = [
     category: "Diagnostic Equipment",
     image: "/product-ultrasound.jpg",
     inStock: false,
+    featured: false,
   },
   {
     id: "aed-defibrillator",
+    slug: "aed-defibrillator",
     name: "AED Automated Defibrillator",
     shortDescription:
       "Life-saving automated external defibrillator with voice-guided CPR coaching.",
@@ -84,9 +113,11 @@ export const products: Product[] = [
     category: "Emergency Equipment",
     image: "/product-defibrillator.jpg",
     inStock: true,
+    featured: false,
   },
   {
     id: "oxygen-concentrator",
+    slug: "oxygen-concentrator",
     name: "Medical Oxygen Concentrator",
     shortDescription:
       "Reliable continuous-flow oxygen concentrator for home and clinical use.",
@@ -95,9 +126,10 @@ export const products: Product[] = [
     category: "Respiratory Equipment",
     image: "/product-oxygen.jpg",
     inStock: true,
+    featured: false,
   },
 ];
 
-export function getProductById(id: string) {
-  return products.find((product) => product.id === id);
+export function getProductBySlug(slug: string) {
+  return products.find((product) => product.slug === slug);
 }

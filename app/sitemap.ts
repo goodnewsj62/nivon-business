@@ -1,11 +1,12 @@
+import { listProducts } from "@/lib/products-data";
 import type { MetadataRoute } from "next";
-import { products } from "@/lib/products";
 
-const baseUrl = "https://www.medequip.example";
+const baseUrl = "https://nivonuk.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const products = await listProducts();
   const productUrls = products.map((product) => ({
-    url: `${baseUrl}/products/${product.id}`,
+    url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,

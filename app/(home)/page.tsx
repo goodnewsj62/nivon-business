@@ -1,7 +1,7 @@
 import CTASection from "@/components/CTASection";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-import { products } from "@/lib/products";
+import { listFeaturedProducts, listProducts } from "@/lib/products-data";
 import {
   ArrowRight,
   Award,
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 };
 
 const trustSignals = [
-  { icon: Clock, label: "18+ Years", desc: "Industry Experience" },
-  { icon: Shield, label: "ISO Certified", desc: "Quality Assured" },
-  { icon: Award, label: "500+", desc: "Products Delivered" },
+  { icon: Clock, label: "5+ Years", desc: "Industry Experience" },
+  { icon: Shield, label: "Quality Certified", desc: "Quality Assured" },
+  { icon: Award, label: "100+", desc: "Products Delivered" },
   { icon: Headphones, label: "24/7", desc: "Customer Support" },
 ];
 
@@ -35,26 +35,31 @@ const testimonials = [
     name: "Dr. Adebayo Ogundimu",
     role: "Chief Medical Director, Lagos General Hospital",
     quote:
-      "MedEquip has been our trusted partner for over 5 years. Their equipment quality and after-sales support are unmatched in the industry.",
+      "Nivon has been our trusted partner for over 5 years. Their equipment quality and after-sales support are unmatched in the industry.",
     rating: 5,
   },
   {
     name: "Dr. Chioma Nwosu",
     role: "Head of Surgery, Abuja Teaching Hospital",
     quote:
-      "We switched to MedEquip for our surgical instruments and the difference in quality is remarkable. Highly recommended for any healthcare facility.",
+      "We switched to Nivon for our surgical instruments and the difference in quality is remarkable. Highly recommended for any healthcare facility.",
     rating: 5,
   },
   {
     name: "Pharm. Ibrahim Musa",
     role: "Administrator, Kano Specialist Centre",
     quote:
-      "Prompt delivery, excellent customer service, and top-notch equipment. MedEquip truly understands the African healthcare landscape.",
+      "Prompt delivery, excellent customer service, and top-notch equipment. Nivon truly understands the African healthcare landscape.",
     rating: 5,
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [products, featuredProducts] = await Promise.all([
+    listProducts(),
+    listFeaturedProducts(),
+  ]);
+
   return (
     <>
       <section className="relative overflow-hidden bg-card">
@@ -88,6 +93,23 @@ export default function HomePage() {
                 </Button>
               </Link>
             </div>
+            <a
+              href="https://wa.me/+2348068755208"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#25D366] transition-opacity hover:opacity-80"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="h-5 w-5 fill-current"
+                aria-hidden="true"
+              >
+                <path d="M16 3C8.82 3 3 8.64 3 15.61c0 2.45.72 4.8 2.09 6.82L3 29l6.78-2.01a13.27 13.27 0 0 0 6.22 1.55C23.18 28.54 29 22.9 29 15.93 29 8.96 23.18 3 16 3Zm0 23.26c-1.95 0-3.87-.52-5.54-1.51l-.4-.24-4.02 1.19 1.23-3.87-.26-.4a10.37 10.37 0 0 1-1.63-5.5C5.38 10.3 10.03 5.74 16 5.74s10.62 4.56 10.62 10.19c0 5.63-4.65 10.33-10.62 10.33Zm5.82-7.62c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.51-.16-.72.16-.21.31-.82 1.03-1.01 1.24-.18.21-.36.23-.68.08-.32-.16-1.34-.49-2.55-1.56-.94-.84-1.58-1.87-1.76-2.18-.18-.31-.02-.48.14-.63.14-.14.32-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.72-1.7-.99-2.33-.26-.62-.53-.53-.72-.54h-.62c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.54 1.13 3.03 1.28 3.24.16.21 2.22 3.47 5.38 4.86.75.32 1.33.52 1.78.67.75.24 1.44.21 1.98.13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37Z" />
+              </svg>
+              Chat with us on WhatsApp
+            </a>
           </div>
           <div className="order-1 md:order-2">
             <div className="relative">
@@ -149,11 +171,18 @@ export default function HomePage() {
               facilities across the region.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.slice(0, 3).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {featuredProducts.length ? (
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <p className="mx-auto mt-10 max-w-md text-center text-sm text-muted-foreground">
+              We are not highlighting specific equipment here yet—browse the full
+              range in the section below or on the products page.
+            </p>
+          )}
         </div>
       </section>
 
@@ -169,7 +198,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.slice(3).map((product) => (
+            {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -303,7 +332,7 @@ export default function HomePage() {
             <div className="order-1 md:order-2">
               <Image
                 src="/nigeria-supply-map.jpg"
-                alt="MedEquip supply network across Africa"
+                alt="Nivon supply network across Africa"
                 loading="lazy"
                 width={640}
                 height={512}
@@ -320,7 +349,7 @@ export default function HomePage() {
             <div>
               <Image
                 src="/portfolio-hospital.jpg"
-                alt="Hospital equipped by MedEquip"
+                alt="Hospital equipped by Nivon"
                 loading="lazy"
                 width={640}
                 height={512}

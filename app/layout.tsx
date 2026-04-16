@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.medequip.example"),
+  metadataBase: new URL("https://www.nivon.example"),
   title: {
-    default: "MedEquip | Trusted Medical Equipment Supplier",
-    template: "%s | MedEquip",
+    default: "Nivon | Trusted Medical Equipment Supplier",
+    template: "%s | Nivon",
   },
   description:
-    "MedEquip supplies reliable diagnostic, surgical, laboratory, and monitoring equipment for hospitals and clinics across Africa.",
+    "Nivon supplies reliable diagnostic, surgical, laboratory, and monitoring equipment for hospitals and clinics across Africa.",
   keywords: [
     "medical equipment",
     "hospital equipment supplier",
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     "Africa healthcare",
   ],
   openGraph: {
-    title: "MedEquip | Trusted Medical Equipment Supplier",
+    title: "Nivon | Trusted Medical Equipment Supplier",
     description:
       "High-quality medical equipment supply for hospitals, clinics, and laboratories across Africa.",
-    url: "https://www.medequip.example",
-    siteName: "MedEquip",
+    url: "https://www.nivon.example",
+    siteName: "Nivon",
     type: "website",
     locale: "en_US",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MedEquip | Trusted Medical Equipment Supplier",
+    title: "Nivon | Trusted Medical Equipment Supplier",
     description:
       "Reliable medical equipment for healthcare facilities across Africa.",
     images: ["/hero-medical.jpg"],
