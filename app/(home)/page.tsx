@@ -54,11 +54,16 @@ const testimonials = [
   },
 ];
 
+const HOME_PRODUCT_PREVIEW = 8 as const;
+
 export default async function HomePage() {
   const [products, featuredProducts] = await Promise.all([
     listProducts(),
     listFeaturedProducts(),
   ]);
+
+  const homeProductPreview = products.slice(0, HOME_PRODUCT_PREVIEW);
+  const showProductSeeMore = products.length > HOME_PRODUCT_PREVIEW;
 
   return (
     <>
@@ -198,17 +203,19 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
+            {homeProductPreview.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <Link href="/products">
-              <Button size="lg" variant="outline" className="gap-2">
-                See More Products <ArrowRight data-icon="inline-end" />
-              </Button>
-            </Link>
-          </div>
+          {showProductSeeMore ? (
+            <div className="mt-10 text-center">
+              <Link href="/products">
+                <Button size="lg" variant="outline" className="gap-2">
+                  See more <ArrowRight data-icon="inline-end" />
+                </Button>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </section>
 

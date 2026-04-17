@@ -5,7 +5,7 @@ import {
   listFeaturedProductsFromTable,
   listProductsFromTable,
 } from "@/lib/supabase/products-repo";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseCatalogClient } from "@/lib/supabase/catalog-client";
 
 /** Re-export DB row helpers for any code that needs the same Supabase shape. */
 export type { ProductRow } from "@/lib/products-db";
@@ -25,7 +25,7 @@ export async function listProducts(): Promise<Product[]> {
   }
 
   try {
-    const supabase = await createSupabaseServerClient();
+    const supabase = createSupabaseCatalogClient();
     return await listProductsFromTable(supabase);
   } catch {
     return [];
@@ -42,7 +42,7 @@ export async function listFeaturedProducts(): Promise<Product[]> {
   }
 
   try {
-    const supabase = await createSupabaseServerClient();
+    const supabase = createSupabaseCatalogClient();
     return await listFeaturedProductsFromTable(supabase);
   } catch {
     return [];
@@ -57,7 +57,7 @@ export async function getProductBySlug(
   }
 
   try {
-    const supabase = await createSupabaseServerClient();
+    const supabase = createSupabaseCatalogClient();
     const found = await getProductBySlugFromTable(supabase, slug);
     return found ?? undefined;
   } catch {
