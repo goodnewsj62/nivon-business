@@ -11,6 +11,8 @@ export type Product = {
   inStock: boolean;
   /** Shown in homepage featured grid (max 3 site-wide; extras remain in catalog). */
   featured: boolean;
+  /** Optional NGN list price; when null, price is hidden on the storefront. */
+  price: number | null;
 };
 
 /** Used when `image` is empty (matches nullable `product.image` in Supabase). */
@@ -48,6 +50,7 @@ export const products: Product[] = [
     category: "Patient Monitoring",
     image: "/product-monitor.jpg",
     inStock: true,
+    price: null,
     featured: true,
   },
   {
@@ -61,6 +64,7 @@ export const products: Product[] = [
     category: "Surgical Equipment",
     image: "/product-surgical.jpg",
     inStock: true,
+    price: null,
     featured: true,
   },
   {
@@ -74,6 +78,7 @@ export const products: Product[] = [
     category: "Lab Equipment",
     image: "/product-lab.jpg",
     inStock: true,
+    price: null,
     featured: true,
   },
   {
@@ -87,6 +92,7 @@ export const products: Product[] = [
     category: "Diagnostic Equipment",
     image: "/product-bp.jpg",
     inStock: true,
+    price: null,
     featured: false,
   },
   {
@@ -100,6 +106,7 @@ export const products: Product[] = [
     category: "Diagnostic Equipment",
     image: "/product-ultrasound.jpg",
     inStock: false,
+    price: null,
     featured: false,
   },
   {
@@ -113,6 +120,7 @@ export const products: Product[] = [
     category: "Emergency Equipment",
     image: "/product-defibrillator.jpg",
     inStock: true,
+    price: null,
     featured: false,
   },
   {
@@ -126,6 +134,7 @@ export const products: Product[] = [
     category: "Respiratory Equipment",
     image: "/product-oxygen.jpg",
     inStock: true,
+    price: null,
     featured: false,
   },
 ];

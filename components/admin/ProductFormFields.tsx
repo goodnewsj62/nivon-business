@@ -117,6 +117,33 @@ export function ProductFormFields({
         </Select>
       </div>
 
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="product-price">Price (NGN)</Label>
+        <Input
+          id="product-price"
+          type="number"
+          inputMode="decimal"
+          min={0}
+          step="0.01"
+          value={value.price ?? ""}
+          onChange={(e) => {
+            const raw = e.target.value;
+            if (raw === "") {
+              patch("price", null);
+              return;
+            }
+            const n = parseFloat(raw);
+            patch("price", Number.isFinite(n) ? n : null);
+          }}
+          placeholder="Leave empty to hide price on the site"
+          className="text-sm"
+        />
+        <p className="text-xs text-muted-foreground">
+          Optional. When set, the storefront shows the amount with{" "}
+          <span className="font-mono">NGN</span> (two decimals).
+        </p>
+      </div>
+
       {!hideImageField ? (
         <div className="flex flex-col gap-2">
           <Label htmlFor="product-image">Image URL</Label>

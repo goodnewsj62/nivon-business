@@ -24,6 +24,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { formatNairaPriceLabel } from "@/lib/product-price";
 import type { Product } from "@/lib/products";
 import { Pencil, Trash2 } from "lucide-react";
 
@@ -53,6 +54,14 @@ export function ProductsDataTable({
         ),
       },
       { accessorKey: "name", header: "Name" },
+      {
+        accessorKey: "price",
+        header: "Price",
+        cell: ({ row }) => {
+          const p = row.original.price;
+          return p != null ? formatNairaPriceLabel(p) : "—";
+        },
+      },
       {
         accessorKey: "category",
         header: "Category",

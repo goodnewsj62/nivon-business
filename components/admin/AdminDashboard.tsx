@@ -40,12 +40,18 @@ function emptyProduct(): Product {
     image: "",
     inStock: true,
     featured: false,
+    price: null,
   };
 }
 
 function validateProduct(p: Product): string | null {
   if (!isValidProductSlug(p.slug)) return productSlugFormatMessage;
   if (!p.name.trim()) return "Name is required.";
+  if (p.price != null) {
+    if (!Number.isFinite(p.price) || p.price < 0) {
+      return "Price must be a non-negative number, or leave empty for no price.";
+    }
+  }
   return null;
 }
 

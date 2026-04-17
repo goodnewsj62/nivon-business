@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ProductImage } from "@/components/ProductImage";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { formatNairaPriceLabel } from "@/lib/product-price";
 import { type Product, productDisplayImage } from "@/lib/products";
 
 const ProductCard = ({ product }: { product: Product }) => (
@@ -36,6 +37,11 @@ const ProductCard = ({ product }: { product: Product }) => (
       <p className="mt-2 flex-1 text-sm text-muted-foreground line-clamp-2">
         {product.shortDescription.trim() || "—"}
       </p>
+      {product.price != null ? (
+        <p className="mt-3 text-sm font-semibold text-foreground">
+          {formatNairaPriceLabel(product.price)}
+        </p>
+      ) : null}
       <Link href={`/products/${product.slug}`} className="mt-4">
         <Button variant="outline" className="w-full">
           Inquire Now

@@ -11,11 +11,24 @@ export type ProductRow = {
   image: string | null;
   status: boolean;
   featured: boolean;
+  /** Present after migration `005_product_price_column.sql`; absent treats as null. */
+  price?: string | number | null;
 };
 
 function nullIfEmpty(s: string): string | null {
   const t = s.trim();
   return t === "" ? null : t;
+}
+
+function rowPriceToNumber(value: string | number | null | undefined): number | null {
+  if (value == null) return null;
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
+  }
+  const t = value.trim();
+  if (t === "") return null;
+  const n = Number(t);
+  return Number.isFinite(n) ? n : null;
 }
 
 export function rowToProduct(row: ProductRow): Product {
@@ -29,6 +42,7 @@ export function rowToProduct(row: ProductRow): Product {
     image: row.image ?? "",
     inStock: row.status,
     featured: row.featured,
+    price: rowPriceToNumber(row.price),
   };
 }
 
@@ -43,6 +57,7 @@ export function productToRow(product: Product): ProductRow {
     image: nullIfEmpty(product.image),
     status: product.inStock,
     featured: product.featured,
+    price: product.price,
   };
 }
 
@@ -61,5 +76,6 @@ export function productToInsertPayload(
     image: row.image,
     status: row.status,
     featured: row.featured,
+    price: row.price,
   };
 }
