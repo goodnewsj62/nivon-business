@@ -22,8 +22,9 @@ const Footer = () => (
             </span>
           </Link>
           <p className="mt-3 text-sm text-muted-foreground">
-            Your trusted partner for high-quality medical equipment. Serving
-            healthcare professionals since 2021.
+            Your trusted partner for high-quality medical equipment—including
+            ophthalmology and physiotherapy. Serving healthcare professionals
+            since 2021.
           </p>
         </div>
 

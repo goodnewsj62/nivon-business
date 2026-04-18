@@ -28,7 +28,7 @@ const values = [
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn how Nivon helps healthcare providers with dependable medical equipment and long-term support.",
+    "Learn how Nivon helps healthcare providers with dependable diagnostic, surgical, laboratory, ophthalmology, physiotherapy, and monitoring equipment—and long-term support.",
 };
 
 export default function AboutPage() {
@@ -45,9 +45,10 @@ export default function AboutPage() {
             </h1>
             <p className="mt-4 text-sm text-muted-foreground md:text-base">
               Since 2021, Nivon has been a trusted supplier of medical devices
-              and equipment to hospitals, clinics, and laboratories across the
-              globe. Our mission is to make high-quality healthcare technology
-              accessible and affordable.
+              and equipment—including ophthalmology and physiotherapy—to
+              hospitals, clinics, and laboratories across the globe. Our mission
+              is to make high-quality healthcare technology accessible and
+              affordable.
             </p>
           </div>
         </div>

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Browse Nivon's catalog of diagnostic, surgical, emergency, and monitoring equipment.",
+    "Browse Nivon's catalog of diagnostic, surgical, emergency, monitoring, ophthalmology, and physiotherapy equipment.",
 };
 
 export default async function ProductsPage() {
@@ -23,8 +23,9 @@ export default async function ProductsPage() {
             Our Products
           </h1>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Explore our full range of medical equipment. Contact us for
-            availability, pricing, and bulk orders.
+            Explore our full range of medical equipment—including ophthalmology
+            and physiotherapy lines. Contact us for availability, pricing, and
+            bulk orders.
           </p>
           <ProductsFilter products={products} />
         </div>

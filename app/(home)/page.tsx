@@ -20,7 +20,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Medical Equipment Supplier Across Africa",
   description:
-    "Discover trusted medical equipment for diagnostics, surgery, laboratories, and patient monitoring.",
+    "Discover trusted medical equipment for diagnostics, surgery, laboratories, patient monitoring, ophthalmology, and physiotherapy.",
 };
 
 const trustSignals = [
@@ -78,9 +78,9 @@ export default async function HomePage() {
               <span className="text-primary">Better Healthcare</span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-              We supply high-quality diagnostic, surgical, and laboratory
-              equipment to hospitals, clinics, and healthcare facilities across
-              Africa.
+              We supply high-quality diagnostic, surgical, laboratory, monitoring,
+              ophthalmology, and physiotherapy equipment to hospitals, clinics,
+              and healthcare facilities across Africa.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/contact">
@@ -172,8 +172,8 @@ export default async function HomePage() {
               Featured Equipment
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-              Explore our top-selling medical equipment trusted by healthcare
-              facilities across the region.
+              Explore our top-selling medical equipment—including ophthalmology and
+              physiotherapy—trusted by healthcare facilities across the region.
             </p>
           </div>
           {featuredProducts.length ? (
@@ -199,7 +199,8 @@ export default async function HomePage() {
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
               Browse our complete range of medical equipment for every
-              department.
+              department, from diagnostics and surgery to ophthalmology and
+              physiotherapy.
             </p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
