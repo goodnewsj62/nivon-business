@@ -25,6 +25,8 @@ export function productDisplayImage(product: Pick<Product, "image">): string {
 
 export const categories = [
   "All",
+  "Ophthalmology",
+  "Physiotherapy",
   "Diagnostic Equipment",
   "Surgical Equipment",
   "Lab Equipment",

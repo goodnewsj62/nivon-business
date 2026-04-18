@@ -58,10 +58,10 @@ const Footer = () => (
           </h4>
           <ul className="mt-3 space-y-2">
             {[
-              "Diagnostic Equipment",
+              "Ophthalmology",
+              "Physiotherapy",
               "Surgical Equipment",
               "Lab Equipment",
-              "Patient Monitoring",
             ].map((cat) => (
               <li key={cat}>
                 <Link
