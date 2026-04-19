@@ -1,5 +1,6 @@
 import CTASection from "@/components/CTASection";
 import ProductCard from "@/components/ProductCard";
+import { SocialLinks } from "@/components/SocialLinks";
 import { Button } from "@/components/ui/button";
 import { listFeaturedProducts, listProducts } from "@/lib/products-data";
 import {
@@ -78,9 +79,9 @@ export default async function HomePage() {
               <span className="text-primary">Better Healthcare</span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-              We supply high-quality diagnostic, surgical, laboratory, monitoring,
-              ophthalmology, and physiotherapy equipment to hospitals, clinics,
-              and healthcare facilities across Africa.
+              We supply high-quality diagnostic, surgical, laboratory,
+              monitoring, ophthalmology, and physiotherapy equipment to
+              hospitals, clinics, and healthcare facilities across Africa.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/contact">
@@ -115,6 +116,12 @@ export default async function HomePage() {
               </svg>
               Chat with us on WhatsApp
             </a>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Follow us
+              </p>
+              <SocialLinks className="mt-3" variant="hero" />
+            </div>
           </div>
           <div className="order-1 md:order-2">
             <div className="relative">
@@ -172,8 +179,9 @@ export default async function HomePage() {
               Featured Equipment
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-              Explore our top-selling medical equipment—including ophthalmology and
-              physiotherapy—trusted by healthcare facilities across the region.
+              Explore our top-selling medical equipment—including ophthalmology
+              and physiotherapy—trusted by healthcare facilities across the
+              region.
             </p>
           </div>
           {featuredProducts.length ? (
@@ -184,8 +192,8 @@ export default async function HomePage() {
             </div>
           ) : (
             <p className="mx-auto mt-10 max-w-md text-center text-sm text-muted-foreground">
-              We are not highlighting specific equipment here yet—browse the full
-              range in the section below or on the products page.
+              We are not highlighting specific equipment here yet—browse the
+              full range in the section below or on the products page.
             </p>
           )}
         </div>

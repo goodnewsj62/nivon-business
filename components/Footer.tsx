@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/SocialLinks";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +27,10 @@ const Footer = () => (
             ophthalmology and physiotherapy. Serving healthcare professionals
             since 2021.
           </p>
+          <h4 className="mt-8 font-heading text-sm font-semibold text-foreground">
+            Follow us
+          </h4>
+          <SocialLinks className="mt-3" />
         </div>
 
         {/* Quick Links */}
